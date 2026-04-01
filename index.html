@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Гайд по Катрусе 💖</title>
+<style>
+body {
+  margin:0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #ffb6f9, #ffd6f9);
+  overflow-x:hidden;
+  color:#5a005a;
+}
+
+h1,h2 {
+  text-align:center;
+}
+
+.container {
+  padding:20px;
+}
+
+.card {
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:20px 0;
+  box-shadow:0 0 20px rgba(255,0,200,0.3);
+}
+
+.sparkle {
+  position:fixed;
+  width:5px;
+  height:5px;
+  background:white;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0% {opacity:0;}
+  50% {opacity:1;}
+  100% {opacity:0;}
+}
+
+/* PASSWORD */
+#lock {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+
+/* CLOUDS */
+.clouds {
+  background:#fff0ff;
+  padding:20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* RUN BUTTON */
+#runaway {
+  position:relative;
+  display:inline-block;
+  padding:10px 20px;
+  background:#ff69b4;
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* CAT */
+.cat {
+  font-size:40px;
+  cursor:pointer;
+}
+
+.hidden {
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="lock">
+<h2>Только для тигриц 😈</h2>
+<input type="password" id="pass">
+<button onclick="checkPass()">Войти</button>
+</div>
+
+<div class="container hidden" id="site">
+
+<h1>💖 Гайд по Катрусе 💖</h1>
+
+<div class="card">
+<h2>🌸 Что мне нравится</h2>
+<div class="clouds" onclick="reveal('food')">
+🐱 Нажми на котика чтобы узнать секрет
+</div>
+<div id="food" class="hidden">
+<p>Орешки, крабовые палочки, фруктовое молоко, йогурты, мармелад банан, чай, пюре, заварной крем, макаруни, бенто 💖</p>
+</div>
+</div>
+
+<div class="card">
+<h2>💫 Не съестное</h2>
+<div class="clouds" onclick="reveal('stuff')">
+✨ Нажми на звёздочки
+</div>
+<div id="stuff" class="hidden">
+<p>Свечки, котики, носки, браслеты, книги, глитер, тарелки, духи 💖</p>
+</div>
+</div>
+
+<div class="card">
+<h2 id="runaway" onclick="tryOpen()">Это не стоит дарить 🚫</h2>
+<div id="nope" class="hidden">
+<p>Вафли, шоколад 🙈 лучше крабовые палочки 😂</p>
+</div>
+</div>
+
+<div class="card">
+<h2>🎁 Вишлист</h2>
+<p>Сюрпризы люблю, но вишлист = +100 к счастью 😏</p>
+</div>
+
+<div class="card">
+<p>💖 Самое главное — ваша любовь, забота и обнимашки 💖</p>
+</div>
+
+</div>
+
+<script>
+let attempts = 0;
+
+function checkPass() {
+  let p = document.getElementById('pass').value;
+  if(p === "tigrici2026") {
+    document.getElementById('lock').style.display = "none";
+    document.getElementById('site').classList.remove('hidden');
+  } else {
+    alert("неправильный пароль 😈");
+  }
+}
+
+function reveal(id) {
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function tryOpen() {
+  attempts++;
+  let btn = document.getElementById('runaway');
+
+  if(attempts < 3){
+    btn.style.left = Math.random()*200 + "px";
+    btn.style.top = Math.random()*100 + "px";
+  } else {
+    document.getElementById('nope').classList.remove('hidden');
+  }
+}
+</script>
+
+</body>
+  </html>
